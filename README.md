@@ -14,6 +14,7 @@ SmartPark is a Java-based REST API application for managing urban parking lots a
 - Java 17 installed and configured in your system PATH
 - Maven 3.11.0 installed and configured in your system PATH
 - Git (for cloning the repository)
+- Postman/Bruno (for API testing)
 
 **Verify installation:**
 
