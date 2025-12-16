@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "9b70f8ed-6bae-460a-890a-aa27fe35203b",
+		"name": "SmartPark",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30640806"
+	},
+	"item": [
+		{
+			"name": "registerParkingLot",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"location\": \"\",\r\n  \"capacity\": 0\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/parking-lots",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"parking-lots"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registerVehicle",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"licensePlate\": \"\",\r\n  \"type\": \"\",\r\n  \"ownerName\": \"\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/vehicles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getParkingLotStatus",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/parking-lots/{{lotId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"parking-lots",
+						"{{lotId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "checkInVehicle",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/parking-lots/{{lotId}}/checkin?licensePlate=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"parking-lots",
+						"{{lotId}}",
+						"checkin"
+					],
+					"query": [
+						{
+							"key": "licensePlate",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "checkoutVehicle",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/parking-lots/{{lotId}}/checkout?licensePlate=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"parking-lots",
+						"{{lotId}}",
+						"checkout"
+					],
+					"query": [
+						{
+							"key": "licensePlate",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllVehiclesInAParkingLot",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/parking-lots/{{lotId}}/vehicles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"parking-lots",
+						"{{lotId}}",
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllParkedVehicles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/vehicles/parked",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"vehicles",
+						"parked"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
