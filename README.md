@@ -49,14 +49,13 @@ Vehicle
 
 **API Testing**
 
-Postman collection included: postman/SmartPark-APIs.json
-Postman environment included: postman/SmartPark-Env.postman_environment.json
+- Postman collection included: postman/SmartPark-APIs.json
+- Postman environment included: postman/SmartPark-Env.postman_environment.json
+- The Postman collection also indicates the required JSON fields for all requests. This means that for endpoints like registering a parking lot or a vehicle, you can see exactly which fields are required and their expected format directly in Postman, so you don’t have to guess or check the source code.
 
 **Notes on Environment**
 
-The environment contains a variable {{lotId}} which holds a preloaded parking lot ID.
-This allows you to reuse the same lot ID across requests without manually editing URLs for check-in, check-out, and status endpoints.
-
+The environment contains a variable {{lotId}} which holds a preloaded parking lot ID. This allows you to reuse the same lot ID across requests without manually editing URLs for check-in, check-out, and status endpoints.
 To use it:
 
 - Import SmartPark-Env.postman_environment.json into Postman
