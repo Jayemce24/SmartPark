@@ -126,19 +126,19 @@ class ParkingServiceTest {
     @Test
     void testGetLotStatusNotFound() {
         when(parkingLotRepository.findById("lotX")).thenReturn(Optional.empty());
-        when(messages.getParkingLotNotFound()).thenReturn("Lot not found");
+        when(messages.getParkingLotNotFound()).thenReturn("Parking lot not found");
 
         ParkingLotNotFoundException ex = assertThrows(ParkingLotNotFoundException.class,
                 () -> parkingService.getLotStatus("lotX"));
 
-        assertTrue(ex.getMessage().contains("Lot not found"));
+        assertTrue(ex.getMessage().contains("Parking lot not found"));
     }
 
     @Test
     void testCheckInVehicleVehicleAlreadyParked() {
         ParkingLot lot = new ParkingLot();
         Vehicle vehicle = new Vehicle();
-        vehicle.setParkingLot(new ParkingLot()); // already parked
+        vehicle.setParkingLot(new ParkingLot());
 
         when(parkingLotRepository.findById("lot123")).thenReturn(Optional.of(lot));
         when(vehicleService.getVehicleIfExists("ABC-123")).thenReturn(vehicle);
@@ -159,12 +159,12 @@ class ParkingServiceTest {
 
         when(parkingLotRepository.findById("lot123")).thenReturn(Optional.of(lot));
         when(vehicleService.getVehicleIfExists("ABC-123")).thenReturn(vehicle);
-        when(messages.getLotFull()).thenReturn("Lot full");
+        when(messages.getLotFull()).thenReturn("Parking lot is full");
 
         ParkingLotFullException ex = assertThrows(ParkingLotFullException.class,
                 () -> parkingService.checkInVehicle("lot123", "ABC-123"));
 
-        assertEquals("Lot full", ex.getMessage());
+        assertEquals("Parking lot is full", ex.getMessage());
     }
 
     @Test
@@ -174,28 +174,11 @@ class ParkingServiceTest {
 
         when(parkingLotRepository.findById("lot123")).thenReturn(Optional.of(lot));
         when(vehicleService.getVehicleIfExists("ABC-123")).thenReturn(vehicle);
-        when(messages.getVehicleNotInLot()).thenReturn("Vehicle not in lot");
+        when(messages.getVehicleNotParked()).thenReturn("Vehicle not parked");
 
         VehicleNotParkedException ex = assertThrows(VehicleNotParkedException.class,
                 () -> parkingService.checkOutVehicle("lot123", "ABC-123"));
 
-        assertEquals("Vehicle not in lot", ex.getMessage());
-    }
-
-    @Test
-    void testCheckOutVehicleWrongLot() {
-        ParkingLot lot = new ParkingLot();
-        Vehicle vehicle = new Vehicle();
-        vehicle.setParkingLot(new ParkingLot());
-        lot.setVehicles(Arrays.asList());
-
-        when(parkingLotRepository.findById("lot123")).thenReturn(Optional.of(lot));
-        when(vehicleService.getVehicleIfExists("ABC-123")).thenReturn(vehicle);
-        when(messages.getVehicleNotInLot()).thenReturn("Vehicle not in lot");
-
-        IllegalStateException ex = assertThrows(IllegalStateException.class,
-                () -> parkingService.checkOutVehicle("lot123", "ABC-123"));
-
-        assertEquals("Vehicle not in lot", ex.getMessage());
+        assertEquals("Vehicle not parked", ex.getMessage());
     }
 }

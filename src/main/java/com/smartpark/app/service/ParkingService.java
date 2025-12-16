@@ -77,7 +77,7 @@ public class ParkingService {
         Vehicle vehicle = vehicleService.getVehicleIfExists(licensePlate);
 
         if (vehicle.getParkingLot() == null) {
-            throw new VehicleNotParkedException(messages.getVehicleNotInLot());
+            throw new VehicleNotParkedException(messages.getVehicleNotParked());
         }
 
         if (!lot.getVehicles().contains(vehicle)) {

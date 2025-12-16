@@ -36,9 +36,10 @@ public class MessageProperties {
     @Value("${vehicle.already.parked}")
     private String vehicleAlreadyParked;
 
-    public String getLotRegistered() {
-        return lotRegistered;
-    }
+    @Value("${vehicle.not.parked}")
+    private String vehicleNotParked;
+
+    public String getLotRegistered() { return lotRegistered; }
 
     public String getVehicleRegistered() {
         return vehicleRegistered;
@@ -72,7 +73,7 @@ public class MessageProperties {
         return vehicleNotInLot;
     }
 
-    public String getVehicleAlreadyParked() {
-        return vehicleAlreadyParked;
-    }
+    public String getVehicleAlreadyParked() { return vehicleAlreadyParked; }
+
+    public String getVehicleNotParked() { return vehicleNotParked; }
 }
